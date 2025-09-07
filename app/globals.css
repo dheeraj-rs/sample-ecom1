@@ -1,0 +1,756 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Wood-inspired color palette */
+  --background: 0 0% 100%;
+  --foreground: 30 8% 15%;
+
+  /* Primary - Rich Walnut */
+  --primary: 25 25% 25%;
+  --primary-foreground: 0 0% 98%;
+
+  /* Secondary - Warm Oak */
+  --secondary: 35 30% 85%;
+  --secondary-foreground: 30 8% 15%;
+
+  /* Accent - Golden Honey */
+  --accent: 42 87% 65%;
+  --accent-foreground: 30 8% 15%;
+
+  /* Muted - Light Ash */
+  --muted: 210 8% 96%;
+  --muted-foreground: 215 8% 46%;
+
+  /* Card backgrounds */
+  --card: 0 0% 100%;
+  --card-foreground: 30 8% 15%;
+
+  /* Popover */
+  --popover: 0 0% 100%;
+  --popover-foreground: 30 8% 15%;
+
+  /* Border and input */
+  --border: 214 12% 88%;
+  --input: 214 12% 88%;
+  --ring: 25 25% 25%;
+
+  /* Destructive - Deep Red */
+  --destructive: 0 65% 51%;
+  --destructive-foreground: 0 0% 98%;
+
+  /* Success - Forest Green */
+  --success: 142 76% 36%;
+  --success-foreground: 0 0% 98%;
+
+  /* Warning - Amber */
+  --warning: 38 92% 50%;
+  --warning-foreground: 0 0% 98%;
+
+  /* Info - Steel Blue */
+  --info: 214 78% 51%;
+  --info-foreground: 0 0% 98%;
+
+  --radius: 0.75rem;
+}
+
+/* Fix for missing button text and layout issues */
+.btn-wood {
+  @apply bg-gradient-to-r from-amber-600 via-amber-700 to-amber-800 text-white hover:from-amber-700 hover:via-amber-800 hover:to-amber-900 shadow-lg hover:shadow-2xl transform hover:-translate-y-1 hover:scale-105 transition-all duration-300 ease-out relative overflow-hidden;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+}
+
+.btn-wood span {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dark {
+  --background: 30 8% 8%;
+  --foreground: 35 15% 92%;
+
+  --primary: 42 87% 65%;
+  --primary-foreground: 30 8% 8%;
+
+  --secondary: 25 15% 18%;
+  --secondary-foreground: 35 15% 92%;
+
+  --accent: 42 87% 65%;
+  --accent-foreground: 30 8% 8%;
+
+  --muted: 25 10% 15%;
+  --muted-foreground: 215 15% 65%;
+
+  --card: 25 8% 12%;
+  --card-foreground: 35 15% 92%;
+
+  --popover: 25 8% 12%;
+  --popover-foreground: 35 15% 92%;
+
+  --border: 25 10% 20%;
+  --input: 25 10% 20%;
+  --ring: 42 87% 65%;
+
+  --destructive: 0 75% 60%;
+  --destructive-foreground: 0 0% 98%;
+
+  --success: 142 85% 45%;
+  --success-foreground: 0 0% 98%;
+
+  --warning: 38 95% 60%;
+  --warning-foreground: 0 0% 98%;
+
+  --info: 214 85% 60%;
+  --info-foreground: 0 0% 98%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    overflow-x: hidden;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/30 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/50;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+
+  /* Typography */
+  .font-heading {
+    font-family: var(--font-playfair), serif;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent;
+  }
+
+  /* Layout helpers */
+  .container-padding {
+    @apply px-4 sm:px-6 lg:px-8 xl:px-12;
+  }
+
+  .section-padding {
+    @apply py-16 sm:py-20 lg:py-24 xl:py-32;
+  }
+
+  /* Advanced Animations */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-bounce-slow {
+    animation: bounce 3s infinite;
+  }
+
+  .animate-wiggle {
+    animation: wiggle 1s ease-in-out infinite;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.8s ease-out forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.8s ease-out forwards;
+  }
+
+  .animate-slide-in-up {
+    animation: slideInUp 0.8s ease-out forwards;
+  }
+
+  .animate-slide-in-down {
+    animation: slideInDown 0.8s ease-out forwards;
+  }
+
+  .animate-zoom-in {
+    animation: zoomIn 0.6s ease-out forwards;
+  }
+
+  .animate-rotate-in {
+    animation: rotateIn 0.8s ease-out forwards;
+  }
+
+  .animate-flip-in {
+    animation: flipIn 0.8s ease-out forwards;
+  }
+
+  /* Interactive Elements */
+  .interactive-card {
+    @apply relative overflow-hidden rounded-2xl bg-card border border-border/50 shadow-lg hover:shadow-2xl transform hover:-translate-y-2 hover:scale-105 transition-all duration-500 ease-out cursor-pointer;
+  }
+
+  .interactive-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 0%, rgba(251, 191, 36, 0.1) 50%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .interactive-card:hover::before {
+    opacity: 1;
+  }
+
+  .interactive-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: rotate(45deg);
+    transition: transform 0.6s;
+    opacity: 0;
+  }
+
+  .interactive-card:hover::after {
+    transform: rotate(45deg) translate(50%, 50%);
+    opacity: 1;
+  }
+
+  /* Glass morphism effect */
+  .glass {
+    @apply backdrop-blur-xl bg-white/10 border border-white/20 shadow-2xl;
+  }
+
+  .glass-dark {
+    @apply backdrop-blur-xl bg-black/10 border border-black/20 shadow-2xl;
+  }
+
+  /* Gradient backgrounds */
+  .gradient-bg-1 {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+
+  .gradient-bg-2 {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  }
+
+  .gradient-bg-3 {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  }
+
+  .gradient-bg-wood {
+    background: linear-gradient(135deg, #8B4513 0%, #D2691E 25%, #CD853F 50%, #DEB887 75%, #F5DEB3 100%);
+  }
+
+  /* Particle effects */
+  .particles-bg {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .particles-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(120, 200, 255, 0.3) 0%, transparent 50%);
+    animation: particleFloat 20s ease-in-out infinite;
+  }
+
+  /* Wood texture overlay */
+  .wood-texture {
+    position: relative;
+  }
+
+  .wood-texture::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse at 50% 20%, rgba(139, 69, 19, 0.1) 0%, transparent 50%),
+      linear-gradient(45deg, rgba(160, 82, 45, 0.05) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(160, 82, 45, 0.05) 25%, transparent 25%);
+    background-size: 200px 100px, 20px 20px, 20px 20px;
+    pointer-events: none;
+  }
+
+  /* Button variants */
+  .btn-wood {
+    @apply bg-gradient-to-r from-amber-600 via-amber-700 to-amber-800 text-white hover:from-amber-700 hover:via-amber-800 hover:to-amber-900 shadow-lg hover:shadow-2xl transform hover:-translate-y-1 hover:scale-105 transition-all duration-300 ease-out relative overflow-hidden;
+  }
+
+  .btn-wood::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  .btn-wood:hover::before {
+    left: 100%;
+  }
+
+  .btn-interactive {
+    @apply relative overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl;
+  }
+
+  .btn-interactive::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+
+  .btn-interactive:hover::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  /* Product card effects */
+  .product-card {
+    @apply relative overflow-hidden rounded-2xl bg-card border border-border/50 shadow-lg hover:shadow-2xl transition-all duration-700 ease-out hover:-translate-y-4 hover:rotate-1;
+  }
+
+  .product-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 0%, rgba(251, 191, 36, 0.1) 50%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .product-card:hover::before {
+    opacity: 1;
+  }
+
+  /* Video backgrounds */
+  .video-bg {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .video-bg video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+  }
+
+  .video-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.4) 100%);
+    z-index: 1;
+  }
+
+  /* Loading states */
+  .loading-shimmer {
+    @apply animate-pulse bg-gradient-to-r from-muted via-muted/70 to-muted;
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  .loading-skeleton {
+    @apply bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-pulse;
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  /* Parallax effects */
+  .parallax-slow {
+    transform: translateY(var(--scroll-y, 0) * 0.5);
+  }
+
+  .parallax-medium {
+    transform: translateY(var(--scroll-y, 0) * 0.3);
+  }
+
+  .parallax-fast {
+    transform: translateY(var(--scroll-y, 0) * 0.1);
+  }
+
+  /* Responsive grid systems */
+  .responsive-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  .responsive-grid-sm {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .responsive-grid-lg {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+
+  /* Custom focus styles */
+  .focus-visible-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  }
+
+  /* Hover effects */
+  .hover-lift {
+    @apply transition-transform duration-300 hover:-translate-y-2;
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-2xl hover:shadow-primary/25;
+  }
+
+  .hover-scale {
+    @apply transition-transform duration-300 hover:scale-105;
+  }
+
+  /* Text effects */
+  .text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Responsive typography */
+  .text-responsive-xs {
+    @apply text-xs sm:text-sm md:text-base;
+  }
+
+  .text-responsive-sm {
+    @apply text-sm sm:text-base md:text-lg;
+  }
+
+  .text-responsive-base {
+    @apply text-base sm:text-lg md:text-xl;
+  }
+
+  .text-responsive-lg {
+    @apply text-lg sm:text-xl md:text-2xl lg:text-3xl;
+  }
+
+  .text-responsive-xl {
+    @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl;
+  }
+
+  .text-responsive-2xl {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl;
+  }
+
+  .text-responsive-3xl {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl;
+  }
+}
+
+@layer utilities {
+
+  /* Text utilities */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Layout utilities */
+  .safe-area-inset {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  /* Responsive spacing */
+  .space-responsive {
+    @apply space-y-4 sm:space-y-6 md:space-y-8 lg:space-y-12;
+  }
+
+  .gap-responsive {
+    @apply gap-4 sm:gap-6 md:gap-8 lg:gap-12;
+  }
+
+  /* Interactive states */
+  .interactive {
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer;
+  }
+
+  .interactive-subtle {
+    @apply transition-all duration-200 hover:scale-102 hover:shadow-md cursor-pointer;
+  }
+
+  /* Debug utilities (remove in production) */
+  .debug-grid {
+    background-image:
+      linear-gradient(rgba(255, 0, 0, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 0, 0, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+}
+
+/* Advanced Keyframes */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes wiggle {
+  0%, 7%, 14%, 21%, 28%, 35%, 42%, 49%, 56%, 63%, 70%, 77%, 84%, 91%, 98%, 100% {
+    transform: rotate(0deg);
+  }
+  3.5%, 10.5%, 17.5%, 24.5%, 31.5%, 38.5%, 45.5%, 52.5%, 59.5%, 66.5%, 73.5%, 80.5%, 87.5%, 94.5% {
+    transform: rotate(1deg);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes rotateIn {
+  from {
+    opacity: 0;
+    transform: rotate(-200deg);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0);
+  }
+}
+
+@keyframes flipIn {
+  from {
+    opacity: 0;
+    transform: perspective(400px) rotateY(90deg);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(400px) rotateY(0deg);
+  }
+}
+
+@keyframes particleFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-30px) rotate(120deg);
+  }
+  66% {
+    transform: translateY(-60px) rotate(240deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive breakpoints animations */
+@media (max-width: 640px) {
+  .animate-mobile-slide {
+    animation: mobileSlide 0.5s ease-out;
+  }
+}
+
+@keyframes mobileSlide {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .btn-wood {
+    @apply bg-amber-900 border-2 border-white;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus visible polyfill for better accessibility */
+.js-focus-visible :focus:not(.focus-visible) {
+  outline: none;
+}
+
+/* Custom scrollbar for webkit browsers */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 12px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border-radius: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+  border-radius: 6px;
+  border: 2px solid hsl(var(--muted));
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.8);
+}
